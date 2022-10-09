@@ -1,0 +1,24 @@
+<!-- <app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
+<h2>{{product.price | currency:'COP'}}</h2>
+
+<p *ngIf="product.taxes" >{{product.taxes | currency: 'COP'}}</p>
+<button (click)="onShowDetail()" >Ver detalle</button>
+<button (click)="onAddToCard()">Add cart</button> -->
+
+
+<a [routerLink]="['/product',product.id]">
+   <app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
+</a>
+
+<h2 class="title">{{ product.price | currency }}</h2>
+<p>{{ product.title }}</p>
+<p class="category">{{ product.category?.name }}</p>
+
+<!-- <button (click)="onShowDetail()">Ver detalle</button> -->
+
+<!-- con el . toma la ruta que esta actualmente -->
+<a routerLink="." [queryParams]="{product: product.id}" >Ver detalle</a>
+
+<button (click)="onAddToCard()">Add cart</button>
+
+
