@@ -116,8 +116,10 @@
       }
     }
   },
-  "defaultProject": "my-store",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ],
+    "analytics": "f2f3ca34-c9d5-495e-b707-8a28db94daf5"
   }
 }

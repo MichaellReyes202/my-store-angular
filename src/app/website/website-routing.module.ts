@@ -11,6 +11,10 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
+// Gards
+import { AuthGuard } from '../guards/auth.guard';
+import { ExitGuard } from '../guards/exit.guard';
+
 const routes: Routes = [
    {
       path: '',
@@ -30,15 +34,24 @@ const routes: Routes = [
          { path: 'product/:id', component: ProductDetailComponent },
          { path: 'my-cart', component: MyCartComponent },
          { path: 'login', component: LoginComponent },
-         { path: 'register', component: RegisterComponent },
+         {
+            path: 'register',
+            component: RegisterComponent ,
+            canDeactivate : [ExitGuard]
+         },
          { path: 'recovery', component: RecoveryComponent },
-         { path: 'profile', component: ProfileComponent }
+         {
+            path: 'profile',
+            component: ProfileComponent ,
+            canActivate : [AuthGuard]
+         }
       ]
    }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class WebsiteRoutingModule { }
